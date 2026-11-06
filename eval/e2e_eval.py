@@ -31,6 +31,7 @@ def main():
     skip = int(sys.argv[3]) if len(sys.argv) > 3 else 40  # gate_eval used the first 40
     args = argparse.Namespace(categories=CATS, threshold=0.5, review_below=0.75, no_refine=False,
                               no_audio=os.environ.get("SBJEV_AUDIO") != "1",
+                              no_scene_cuts=os.environ.get("SBJEV_SCENES") != "1",
                               no_scan=(mode == "noscan"), open=False, cookies_from_browser=None, audio_idle=30,
                               ignore_existing=True)  # the crowd segments ARE the answer key
     jev = sbjev.Jev(os.environ.get("SBJEV_MODEL", "jev-latest"))

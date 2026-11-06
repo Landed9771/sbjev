@@ -845,6 +845,29 @@ def own_product(jev: Jev, lines: list[Line], seg: Segment, channel: str) -> floa
     return ans["own"]["noul"]
 
 
+PLATFORMS = re.compile(r"\b(nebula|curiosity ?stream)\b", re.I)
+
+
+def platform_plug(lines: list[Line], seg: Segment) -> bool:
+    """SponsorBlock's crowd files Nebula / CuriosityStream plugs as sponsor even when it's the
+    creator's own show there (the platform pays per sign-up). Text match on the segment."""
+    return bool(PLATFORMS.search(" ".join(lines[i].text for i in range(seg.first, seg.last + 1))))
+
+
+def should_join(jev: Jev, lines: list[Line], a: Segment, b: Segment, channel: str) -> bool:
+    """a comes first, b second; one is sponsor, the other selfpromo, and they touch or overlap.
+    Join (as one sponsor read) when:
+      - Nebula/CuriosityStream is plugged anywhere in the pair (the crowd files those as sponsor,
+        even for the creator's own show there), or
+      - the selfpromo comes FIRST, leading into the ad ("I made a new episode..."), and isn't
+        clearly the creator's own product.
+    A selfpromo AFTER the sponsor (Patreon thanks, merch sign-off) stays its own segment."""
+    pair = Segment(a.cat, min(a.first, b.first), max(a.last, b.last))
+    if platform_plug(lines, pair):
+        return True
+    return a.cat == "selfpromo" and own_product(jev, lines, a, channel) < 0.6
+
+
 RETURN_PHRASE = re.compile(
     r"^(?:(?:and|so|okay|ok|alright|all right|anyway|anyways|well)\W+)*(?:now\W+)?"
     r"(?:(?:let'?s|let us)\W+)?(?:(?:get|go|head|jump)\W+)?back\W+to\b", re.I)
@@ -961,6 +984,13 @@ def audio_worker(args):
 
 def process(jev: Jev, vid: str, args) -> dict:
     words, duration, title, word_timed, music = fetch_subs(vid, args.cookies_from_browser)
+    if not args.no_audio:
+        # fetch the audio (and low-res video for scene cuts) in the background while Jev works;
+        # the snapping worker waits for these instead of downloading them again
+        import threading
+        from audio_snap import AudioSnapper
+        threading.Thread(target=AudioSnapper(vid, CACHE, duration, args.cookies_from_browser).prefetch,
+                         args=(not getattr(args, "no_scene_cuts", False),), daemon=True).start()
     lines = group_lines(words, duration)
     print(f"\n== {title}  [{vid}]  {fmt(duration)}, {len(lines)} lines", file=sys.stderr)
     line_cats = [c for c in args.categories if c in LINE_CATS]
@@ -1026,6 +1056,9 @@ def process(jev: Jev, vid: str, args) -> dict:
         if s.cat == "sponsor" and "selfpromo" in args.categories and own_product(jev, lines, s, channel) >= 0.4:
             s.cat = "selfpromo"
             s.notes.append("the creator's own product, so self-promotion")
+        elif s.cat == "selfpromo" and "sponsor" in args.categories and platform_plug(lines, s):
+            s.cat = "sponsor"
+            s.notes.append("Nebula/CuriosityStream plug: SponsorBlock files these as sponsor")
         elif "own" in FIX and s.cat == "selfpromo" and "sponsor" in args.categories \
                 and own_product(jev, lines, s, channel) < 0.3:
             s.cat = "sponsor"
@@ -1045,6 +1078,22 @@ def process(jev: Jev, vid: str, args) -> dict:
             include_return_line(words, s)
 
     parallel(finish, segs)
+    # sentence edges can stretch a selfpromo run into the sponsor run after it (or vice versa);
+    # join them by time (see should_join); done after edges so each half keeps its own traced-back start
+    joined: list[Segment] = []
+    for s in sorted(segs, key=lambda s: s.start):
+        prev = next((p for p in reversed(joined) if p.cat in ("sponsor", "selfpromo")), None)
+        if (prev and s.cat in ("sponsor", "selfpromo") and s.cat != prev.cat and s.start <= prev.end + 3.0
+                and "sponsor" in args.categories):
+            if should_join(jev, lines, prev, s, channel):
+                prev.start, prev.end = min(prev.start, s.start), max(prev.end, s.end)
+                prev.first, prev.last = min(prev.first, s.first), max(prev.last, s.last)
+                prev.cat = "sponsor"
+                prev.conf = max(prev.conf, s.conf)
+                prev.notes.append("self-promo and sponsor runs joined into one ad read")
+                continue
+        joined.append(s)
+    segs = joined
 
     o = None
     if "outro" in args.categories and any(e["category"] == "outro" for e in known):
@@ -1089,7 +1138,8 @@ def process(jev: Jev, vid: str, args) -> dict:
                       (s.end, "onset" if s.cat in ("intro", "poi_highlight") else "offset",
                        "start" if s.cat == "poi_highlight" else "end")]
         try:
-            snapped = audio_worker(args).snap(vid, CACHE, duration, args.cookies_from_browser, edges, words)
+            snapped = audio_worker(args).snap(vid, CACHE, duration, args.cookies_from_browser, edges, words,
+                                              scene_cuts=not getattr(args, "no_scene_cuts", False))
             for n, s in enumerate(segs):
                 (s.start, n1), (s.end, n2) = snapped[2 * n], snapped[2 * n + 1]
                 if s.cat == "poi_highlight":  # a timestamp: both "edges" are the same onset
@@ -1270,6 +1320,8 @@ def main() -> None:
                     help="classify every line instead of scanning first (about 2x the cost)")
     ap.add_argument("--no-audio", action="store_true", default=not CONFIG.get("audio_snapping", True),
                     help="skip snapping edges to the audio with local Whisper + VAD")
+    ap.add_argument("--no-scene-cuts", action="store_true", default=not CONFIG.get("scene_cuts", True),
+                    help="don't line edges up with visual cuts (skips the low-res video download)")
     ap.add_argument("--audio-idle", type=float, default=float(CONFIG.get("audio_idle_minutes", 30)), metavar="MIN",
                     help="stop the audio worker (freeing all its VRAM) after this many idle minutes (default 30)")
     ap.add_argument("--open", action="store_true", help="open each import link in the default browser")

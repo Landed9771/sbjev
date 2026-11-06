@@ -30,40 +30,78 @@ def _norm(s: str) -> str:
 
 
 class AudioSnapper:
-    def __init__(self, video_id: str, cache: Path, duration: float, cookies_from: str | None = None):
+    def __init__(self, video_id: str, cache: Path, duration: float, cookies_from: str | None = None,
+                 scene_cuts: bool = False):
         self.video_id, self.duration = video_id, duration
         self.dir = cache / "audio"
         self.dir.mkdir(parents=True, exist_ok=True)
         self.cookies_from = cookies_from
+        self.scene_cuts = scene_cuts
         self._src: Path | None = None
+        self._cuts_src = None  # low-res video for scene cuts; False once a download failed
 
     # ---------------------------------------------------------------- resources
 
+    def prefetch(self, video: bool) -> None:
+        """Download the audio (and the low-res video for scene cuts) now, while Jev works.
+        A <id>.downloading marker tells the worker to wait rather than download again."""
+        jobs = [(self.dir, self._download_audio)]
+        if video:
+            jobs.append((self.dir.parent / "video", self._download_video))
+        for folder, download in jobs:
+            folder.mkdir(parents=True, exist_ok=True)
+            if self._found(folder):
+                continue
+            marker = folder / f"{self.video_id}.downloading"
+            try:
+                marker.touch()
+                download()
+            except Exception:
+                pass  # the worker tries again later and reports its own error
+            finally:
+                marker.unlink(missing_ok=True)
+
+    @staticmethod
+    def _wait_for_prefetch(folder: Path, video_id: str, limit: float = 180.0) -> None:
+        """The main process starts these downloads early (prefetch); if one is still running,
+        wait for it instead of starting a second copy of the same download."""
+        import time
+        deadline = time.time() + limit
+        while any(folder.glob(f"{video_id}.*.part")) or (folder / f"{video_id}.downloading").exists():
+            if time.time() > deadline:
+                break
+            time.sleep(0.5)
+
+    def _found(self, folder: Path) -> list[Path]:
+        return [p for p in folder.glob(f"{self.video_id}.*") if p.suffix not in (".part", ".downloading", ".ytdl")]
+
     def _audio_file(self) -> Path:
         if self._src is None:
-            got = [p for p in self.dir.glob(f"{self.video_id}.*") if p.suffix != ".part"]
-            if not got:
-                # videos with auto-dubbed tracks list several languages; the original
-                # one is tagged "original" and is the only one that matches the captions
-                ytdlp = ["yt-dlp"] if shutil.which("yt-dlp") else [sys.executable, "-m", "yt_dlp"]
-                cmd = ytdlp + ["-q", "--no-warnings", "-f", "ba[format_note*=original]/ba",
+            self._wait_for_prefetch(self.dir, self.video_id)
+            if not self._found(self.dir):
+                self._download_audio()
+            self._src = self._found(self.dir)[0]
+        return self._src
+
+    def _download_audio(self) -> None:
+        # videos with auto-dubbed tracks list several languages; the original
+        # one is tagged "original" and is the only one that matches the captions
+        ytdlp = ["yt-dlp"] if shutil.which("yt-dlp") else [sys.executable, "-m", "yt_dlp"]
+        cmd = ytdlp + ["-q", "--no-warnings", "-f", "ba[format_note*=original]/ba",
                        "--retries", "10", "--fragment-retries", "10", "-o",
                        str(self.dir / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={self.video_id}"]
-                if not shutil.which("deno") and shutil.which("node"):  # JS runtime; yt-dlp defaults to deno
-                    cmd[len(ytdlp):len(ytdlp)] = ["--js-runtimes", "node"]
-                if self.cookies_from:
-                    cmd[len(ytdlp):len(ytdlp)] = ["--cookies-from-browser", self.cookies_from]
-                for _ in range(3):  # googlevideo sometimes 403s mid-download; a fresh URL usually works
-                    r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
-                    got = [p for p in self.dir.glob(f"{self.video_id}.*") if p.suffix != ".part"]
-                    if r.returncode == 0 and got:
-                        break
-                    for p in self.dir.glob(f"{self.video_id}.*.part"):
-                        p.unlink(missing_ok=True)
-                if not got:
-                    raise RuntimeError(f"audio download failed: {r.stderr.strip()[-300:]}")
-            self._src = got[0]
-        return self._src
+        if not shutil.which("deno") and shutil.which("node"):  # JS runtime; yt-dlp defaults to deno
+            cmd[len(ytdlp):len(ytdlp)] = ["--js-runtimes", "node"]
+        if self.cookies_from:
+            cmd[len(ytdlp):len(ytdlp)] = ["--cookies-from-browser", self.cookies_from]
+        r = None
+        for _ in range(3):  # googlevideo sometimes 403s mid-download; a fresh URL usually works
+            r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
+            if r.returncode == 0 and self._found(self.dir):
+                return
+            for p in self.dir.glob(f"{self.video_id}.*.part"):
+                p.unlink(missing_ok=True)
+        raise RuntimeError(f"audio download failed: {r.stderr.strip()[-300:]}")
 
     def _clip(self, a: float, b: float) -> np.ndarray:
         pcm = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{a:.3f}", "-t", f"{b - a:.3f}",
@@ -169,7 +207,56 @@ class AudioSnapper:
         # caption time (captions lag speech by up to a second or two around music)
         if not g0 - 2.5 <= t <= g1 + 2.5:
             return t, "audio: snap too far, kept caption time"
-        return self._place(g0, g1, role), None
+        new = self._place(g0, g1, role)
+        if self.scene_cuts:
+            # careful submitters line edges up with the editor's visual cut when there is one inside
+            # the pause (median error 0.097 -> 0.068 s on 60 crowd edges; a usable cut on ~1 in 4)
+            try:
+                cuts = [x for x, score in self._scene_cuts(g0, g1) if score >= 20 and g0 <= x <= g1]
+            except Exception:
+                cuts = []
+            if cuts:
+                return min(cuts, key=lambda x: abs(x - new)), "on a scene cut"
+        return new, None
+
+    def _video_file(self) -> Path | None:
+        """The whole video at the lowest quality YouTube has (a few MB, a few seconds to fetch).
+        Downloading only the seconds around an edge looks cheaper but those section downloads
+        stall on googlevideo, sometimes for minutes."""
+        vdir = self.dir.parent / "video"
+        vdir.mkdir(exist_ok=True)
+        self._wait_for_prefetch(vdir, self.video_id)
+        if not self._found(vdir):
+            self._download_video()
+        got = self._found(vdir)
+        return got[0] if got else None
+
+    def _download_video(self) -> None:
+        vdir = self.dir.parent / "video"
+        vdir.mkdir(exist_ok=True)
+        ytdlp = ["yt-dlp"] if shutil.which("yt-dlp") else [sys.executable, "-m", "yt_dlp"]
+        cmd = ytdlp + ["-q", "--no-warnings", "-f", "wv[ext=mp4]/wv", "--retries", "5",
+                       "-o", str(vdir / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={self.video_id}"]
+        if self.cookies_from:
+            cmd[len(ytdlp):len(ytdlp)] = ["--cookies-from-browser", self.cookies_from]
+        subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+
+    def _scene_cuts(self, a: float, b: float) -> list[tuple[float, float]]:
+        """[(time, score)] of visual scene changes between a and b (ffmpeg scdet, local)."""
+        if self._cuts_src is None:
+            self._cuts_src = self._video_file() or False
+        if not self._cuts_src:
+            return []
+        err = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{max(0.0, a - 1):.3f}", "-t", f"{b - a + 2:.3f}",
+                              "-copyts", "-i", str(self._cuts_src), "-vf", "scdet=threshold=6:sc_pass=0,metadata=print",
+                              "-an", "-f", "null", "-"], capture_output=True, text=True, timeout=120).stderr
+        out = []
+        for block in err.split("frame:")[1:]:
+            m_t = re.search(r"pts_time:([\d.]+)", block)
+            m_s = re.search(r"lavfi\.scd\.score=([\d.]+)", block)
+            if m_t and m_s and a <= float(m_t.group(1)) <= b:
+                out.append((float(m_t.group(1)), float(m_s.group(1))))
+        return out
 
     SPEECH = 0.85
 
@@ -214,7 +301,8 @@ def _worker_main() -> None:
         req = json.loads(line)
         try:
             words = [SimpleNamespace(text=w, t=t) for w, t in req["words"]]
-            snapper = AudioSnapper(req["video_id"], Path(req["cache"]), req["duration"], req.get("cookies"))
+            snapper = AudioSnapper(req["video_id"], Path(req["cache"]), req["duration"], req.get("cookies"),
+                                   scene_cuts=bool(req.get("scene_cuts")))
             out = {"edges": [list(snapper.snap(t, kind, words, *rest)) for t, kind, *rest in req["edges"]]}
         except Exception as e:
             out = {"error": f"{type(e).__name__}: {e}"}
@@ -233,7 +321,7 @@ class SnapWorker:
         self.lock = threading.Lock()
 
     def snap(self, video_id: str, cache: Path, duration: float, cookies: str | None,
-             edges: list[tuple[float, str]], words: list) -> list[tuple[float, str | None]]:
+             edges: list[tuple[float, str]], words: list, scene_cuts: bool = False) -> list[tuple[float, str | None]]:
         with self.lock:
             if self.timer:
                 self.timer.cancel()
@@ -242,7 +330,7 @@ class SnapWorker:
                                              stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True,
                                              encoding="utf-8")
             req = {"video_id": video_id, "cache": str(cache), "duration": duration, "cookies": cookies,
-                   "edges": edges, "words": [[w.text, w.t] for w in words]}
+                   "edges": edges, "words": [[w.text, w.t] for w in words], "scene_cuts": scene_cuts}
             self.proc.stdin.write(json.dumps(req) + "\n")
             self.proc.stdin.flush()
             line = self.proc.stdout.readline()

@@ -83,6 +83,7 @@ restart. End the `python` process and the background launcher restarts it within
 | `categories` | sponsor, selfpromo, interaction, intro, outro | default categories when the panel doesn't send any |
 | `audio_snapping` | `true` | snap edges to the audio with faster-whisper + Silero VAD |
 | `audio_idle_minutes` | `30` | the speech model is unloaded (all GPU memory freed) after this long unused |
+| `scene_cuts` | `true` | put an edge on the editor's visual cut when there's one inside the pause (downloads the video at lowest quality, ~8 MB for 25 min) |
 | `skip_known_categories` | `false` | server-side default for "skip categories already on SponsorBlock" |
 | `cookies_from_browser` | `null` | e.g. `"firefox"`: let yt-dlp use a browser's YouTube login if the bot check blocks you |
 | `parallel_requests` | `6` | concurrent Jev requests |
@@ -113,12 +114,18 @@ installed loads the drafts.
 4. **Edges:** for sponsor and self-promo reads, Jev finds the sentence that names the product,
    traces back to where the lead-in starts, and picks the sentence that ends the read. A small
    extra question tells apart the creator's own products (self-promotion) from other companies'
-   (sponsor; this includes collaborations and Nebula, as the crowd files them).
+   (sponsor; this includes collaborations and Nebula, as the crowd files them). When one read
+   comes out as self-promotion that turns into a sponsor partway ("a new episode of my show...
+   only on Nebula"), the two halves are joined into one sponsor segment. A creator's own plug
+   *after* a sponsor (Patreon thanks, merch) stays separate.
 5. **Outro / intro:** a sign-off question over the last ~2 minutes, plus music-only gaps from
    the captions.
 6. **Audio:** each edge is cut in the pause it belongs to, using faster-whisper (to find the
    word) and Silero VAD (to find the pause). Starts go ~0.3 s before the first word, ends just
-   before speech resumes. Those offsets were measured from locked SponsorBlock segments.
+   before speech resumes. Those offsets were measured from locked SponsorBlock segments. If
+   the editor made a visual cut inside that pause, the edge goes on that frame instead
+   (`scene_cuts`; it needs the whole video at the lowest quality, a few MB, downloaded in the
+   background while Jev works).
 7. **Import link:** new segments are put in the `#segments=` link SponsorBlock reads; segments
    already on SponsorBlock are left out.
 

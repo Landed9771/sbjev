@@ -15,6 +15,7 @@
 
   "audio_snapping": true,
   "audio_idle_minutes": 30,
+  "scene_cuts": true,
 
   "skip_known_categories": false,
   "cookies_from_browser": null,
