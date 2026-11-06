@@ -1,0 +1,22 @@
+{
+  "_readme": "Copy this file to config.json (the installer does it for you) and edit. Restart the server after changes (it restarts itself within a few seconds if you end the python process).",
+
+  "keys": {
+    "_readme": "Fill in ONE backend. Environment variables with the same names (upper case) override these.",
+    "typesafe_api_key": "",
+    "ai_gateway_api_key": "",
+    "cloudflare_account_id": "",
+    "cloudflare_api_token": ""
+  },
+
+  "port": 8765,
+  "model": "jev-1.14.0",
+  "categories": ["sponsor", "selfpromo", "interaction", "intro", "outro"],
+
+  "audio_snapping": true,
+  "audio_idle_minutes": 30,
+
+  "skip_known_categories": false,
+  "cookies_from_browser": null,
+  "parallel_requests": 6
+}

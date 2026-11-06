@@ -1,0 +1,5 @@
+requests>=2.28
+numpy>=1.24
+yt-dlp>=2026.8.19
+# optional, for audio edge snapping (install.ps1 adds it unless -NoAudio):
+# faster-whisper>=1.2

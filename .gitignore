@@ -1,0 +1,15 @@
+# personal / machine-specific
+config.json
+python.txt
+server.log
+test-server.log
+
+# caches (captions, Jev answers, audio) - can be many GB
+cache/
+__pycache__/
+*.pyc
+
+# evaluation outputs (regenerate with the scripts in eval/); the corpus itself is kept
+eval/*.json
+!eval/corpus.json
+eval/clips/
