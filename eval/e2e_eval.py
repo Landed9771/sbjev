@@ -29,7 +29,8 @@ def main():
     mode = sys.argv[1]
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 20
     skip = int(sys.argv[3]) if len(sys.argv) > 3 else 40  # gate_eval used the first 40
-    args = argparse.Namespace(categories=CATS, threshold=0.5, review_below=0.75, no_refine=False, no_audio=True,
+    args = argparse.Namespace(categories=CATS, threshold=0.5, review_below=0.75, no_refine=False,
+                              no_audio=os.environ.get("SBJEV_AUDIO") != "1",
                               no_scan=(mode == "noscan"), open=False, cookies_from_browser=None, audio_idle=30,
                               ignore_existing=True)  # the crowd segments ARE the answer key
     jev = sbjev.Jev(os.environ.get("SBJEV_MODEL", "jev-latest"))
@@ -68,7 +69,8 @@ def main():
         a = np.abs(xs)
         if len(a):
             print(f"   sponsor/selfpromo {name} error n={len(a)}: median {np.median(a):.2f}s  <=0.5s {np.mean(a <= .5):.0%}  "
-                  f"<=1s {np.mean(a <= 1):.0%}  <=3s {np.mean(a <= 3):.0%}  (late/early {np.mean(np.array(xs) > 0):.0%} late)")
+                  f"<=1s {np.mean(a <= 1):.0%}  <=3s {np.mean(a <= 3):.0%}  (late/early {np.mean(np.array(xs) > 0):.0%} late)  "
+                  f"| <=0.1s {np.mean(a <= .1):.0%}  <=0.25s {np.mean(a <= .25):.0%}")
 
 
 if __name__ == "__main__":

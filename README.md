@@ -14,7 +14,7 @@ in the pause between sentences, where careful SponsorBlock submitters put them.
 | **Cost** | about **$0.0007 per 10 minutes** of video at Jev's $0.042 per million tokens (less if SponsorBlock already covers part of it) |
 | **Speed** | about 3–4 s per video for the Jev part, plus a few seconds for audio |
 | **Finds** | 83–88% of the well-voted SponsorBlock segments on held-out test videos |
-| **Edges** | typically within ~0.5 s of well-voted segments; see [Accuracy](#accuracy) |
+| **Edges** | ~0.1 s from well-voted segments when the right sentence is picked; about 1 in 3 needs a one-sentence nudge (see [Accuracy](#accuracy)) |
 
 ## Requirements
 
@@ -131,9 +131,13 @@ Measured against locked or well-voted (3+) SponsorBlock segments from 14 large c
 
 - **Finding segments:** 34–36 of 41 on one held-out set, 27 of 30 on a fresh one. Many "extra"
   segments are real ones with few votes (end-of-video outros, "let me know in the comments").
-- **Edges:** typically within ~0.5 s of the crowd. About a third of segments still need a nudge
-  of a sentence, mostly long segues ("before we get to the interview, I want to talk about how I
-  research these videos...") or a passing mention of the sponsor before the actual read.
+- **Edges, when the right sentence is picked:** the audio step puts cuts a median **~0.1 s** from
+  well-voted segments (0.13 s on starts, 0.11 s on ends, 170 crowd edges, held-out half). That is
+  about as tight as the crowd agrees with itself: equally reasonable cut rules differ by 0.1–0.2 s.
+- **Picking the sentence** is the remaining weak spot. In about a third of segments Jev starts or
+  ends one sentence off, which means seconds, not fractions: long segues ("before we get to the
+  interview, I want to talk about how I research these videos...") or a passing mention of the
+  sponsor before the actual read. Check those in SponsorBlock's preview before submitting.
 - **Highlight** is conservative: it only answers when clearly sure. That was 2 of 8 MrBeast
   videos, both within 5 s, and no wrong answers.
 - **Filler** doesn't work well from transcripts; the crowd's filler is mostly visual.
