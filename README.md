@@ -137,12 +137,12 @@ Measured against locked or well-voted (3+) SponsorBlock segments: 212 videos fro
 (`eval/`). Held-out videos were not used for tuning; the largest test set is 97 videos from 14
 channels that nothing was tuned on.
 
-- **Finding segments:** 207 of 253 well-voted segments across the three held-out sets (82%;
-  79% on the 97-video set). About a third of "extra" segments are real ones with few votes
+- **Finding segments:** 214 of 253 well-voted segments across the three held-out sets (85%;
+  83% on the 97-video set). About a third of "extra" segments are real ones with few votes
   (end-of-video outros, "let me know in the comments"), another quarter are filed by the crowd
   under a neighbouring category.
-- **Picking the right sentence (97-video set, before audio snapping):** 66% of starts and 62% of
-  ends within 1 s of the crowd, 73% / 75% within 3 s.
+- **Picking the right sentence (97-video set, before audio snapping):** 68% of starts and 62% of
+  ends within 1 s of the crowd, 76% / 74% within 3 s.
 - **Edges, when the right sentence is picked:** the audio step puts cuts a median **~0.1 s** from
   well-voted segments (0.13 s on starts, 0.11 s on ends, 170 crowd edges, held-out half). That is
   about as tight as the crowd agrees with itself: equally reasonable cut rules differ by 0.1–0.2 s.
@@ -152,7 +152,9 @@ channels that nothing was tuned on.
   sponsor before the actual read. Check those in SponsorBlock's preview before submitting.
   Handled by fixed rules: "after the break" cliffhangers count as the start; "and now back to
   the video" counts as the end; "thanks for watching" sign-offs and "next time on..." teasers
-  are left out of the ad.
+  are left out of the ad; Tom Scott-style "...or right now on Nebula" gets its own short sponsor
+  segment, the way the crowd files it. Borderline self-promotion (a Patreon thank-you, the
+  creator's book, a friend's channel) gets a second, targeted question instead of being dropped.
 - **Highlight** is conservative: it only answers when clearly sure. That was 2 of 8 MrBeast
   videos, both within 5 s, and no wrong answers.
 - **Filler** doesn't work well from transcripts; the crowd's filler is mostly visual.

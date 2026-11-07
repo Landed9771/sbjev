@@ -712,6 +712,26 @@ AD_SHAPE = {
 }
 
 
+_SEGUE_RULE = ("A segue, joke or pun that exists to transition into the product belongs to the segment, "
+               "even if it mentions the video's topic (\"...just like X, our sponsor...\").")
+_NAMED_RULE = "If the segment opens by naming the product, choose `sponsor_named_at`."
+START_RULES_VARIANTS = {
+    "orig": [_SEGUE_RULE,
+             "Sentences that still inform about the video's subject, or conclude it, are NOT part "
+             "of the segment, even the one right before it.",
+             _NAMED_RULE],
+    "A": [_SEGUE_RULE, _NAMED_RULE],
+    "B": [_SEGUE_RULE,
+          "The lead-in often begins where the creator steps out of the video's own analysis or story: a "
+          "personal aside (\"I just want to say how great it is to cover this show\"), talking to the viewers "
+          "(\"a lot of you told me...\"), or a theme that sets up what the product is for (online privacy before "
+          "a VPN, phones before a mobile game). It belongs to the segment from its first sentence.",
+          "The video's own conclusion or summary of its subject is NOT part of the segment.",
+          _NAMED_RULE],
+}
+START_RULES = START_RULES_VARIANTS[os.environ.get("SBJEV_START_RULES", "B")]
+
+
 def sentence_edges(jev: Jev, words: list[Word], seg: Segment, title: str) -> None:
     """Re-place a detected sponsor/selfpromo segment's start and end on sentence
     boundaries: anchor on the sentence that first names the product, trace back
@@ -752,13 +772,7 @@ def sentence_edges(jev: Jev, words: list[Word], seg: Segment, title: str) -> Non
                                       f"sentence of {what}: where the creator leaves the subject of the video "
                                       f"(`video_title`) and begins the lead-in that arrives at the product?",
                           "segment_definition": shape,
-                          "rules": [
-                              "A segue, joke or pun that exists to transition into the product belongs to the segment, "
-                              "even if it mentions the video's topic (\"...just like X, our sponsor...\").",
-                              "Sentences that still inform about the video's subject, or conclude it, are NOT part "
-                              "of the segment, even the one right before it.",
-                              "If the segment opens by naming the product, choose `sponsor_named_at`.",
-                          ]},
+                          "rules": START_RULES},
                       "criteria": {sid(i): None for i in range(a, named + 1)},
                   }})
     start_i = int(ans["start"]["choice"][1:])
@@ -836,7 +850,8 @@ def sentence_edges(jev: Jev, words: list[Word], seg: Segment, title: str) -> Non
 # experimental fixes, tested on Jev 1.14 (eval/e2e_eval.py): "own" (sponsor<->selfpromo both ways)
 # held up on fresh videos and is on by default; "named", "end" and "walk" didn't and stay off. Also
 # tried and dropped (no gain on a 97-video held-out set): a per-sentence yes/no "profile" for edges,
-# a wider trace-back window, close-call tie-breaks toward the earlier sentence, an opening-word prior.
+# a wider trace-back window, close-call tie-breaks toward the earlier sentence, an opening-word prior,
+# a coarse paragraph-level search for long segues (worse at 0.5 confidence, neutral at 0.8).
 FIX = set(filter(None, os.environ.get("SBJEV_FIX", "own").split(",")))
 
 
@@ -864,6 +879,42 @@ def own_product(jev: Jev, lines: list[Line], seg: Segment, channel: str) -> floa
         }
     ans = jev.ask(f"YouTube channel: {channel}\nAd read from one of its videos:\n{body}", {"own": question})
     return ans["own"]["noul"]
+
+
+def nebula_tags(words: list[Word]) -> list[Segment]:
+    """Tom Scott-style "Next time, or right now on Nebula, ..." teasers: the crowd files just the
+    "or right now on Nebula" phrase as its own ~2 s sponsor segment (eval: 7 of 7 such phrases on
+    his channel). Only this exact form: other "...right now on Nebula" wording isn't marked."""
+    out = []
+    norm = [re.sub(r"[^a-z]", "", w.text.lower()) for w in words]
+    for i in range(len(words) - 5):
+        if norm[i] == "next" and norm[i + 1] == "time" and norm[i + 2] == "or" and norm[i + 3] == "right" \
+                and norm[i + 4] == "now":
+            j = next((k for k in range(i + 5, min(len(words), i + 9)) if norm[k].startswith("nebul")), None)
+            if j is None:
+                continue
+            end = words[j + 1].t if j + 1 < len(words) else words[j].t + 0.6
+            seg = Segment("sponsor", 0, 0, start=words[i + 2].t, end=end, conf=0.9)
+            seg.notes.append("\"or right now on Nebula\" plug")
+            out.append(seg)
+    return out
+
+
+SELFPROMO_RECHECK = float(os.environ.get("SBJEV_SELFPROMO_RECHECK", "0.6"))
+
+
+def is_self_plug(jev: Jev, lines: list[Line], seg: Segment, title: str) -> bool:
+    """Second look at a borderline selfpromo run: is it really a plug, or a passing mention?"""
+    lo, hi = max(0, seg.first - 2), min(len(lines), seg.last + 3)
+    ans = jev.ask({"video_title": title, "transcript": "\n".join(lines[i].text for i in range(lo, hi))}, {"plug": {
+        "type": "noul",
+        "instructions": "In this excerpt, does the creator promote something of their own or a friend's: their "
+                        "Patreon or membership, merch, a book or course, another channel or show, or another "
+                        "creator's channel, asking viewers to go check it out or support it?",
+        "criteria": {"true": "a plug that asks viewers to buy, support, subscribe to or visit it",
+                     "false": "a passing mention, a question to viewers, credits, or the video's own content"},
+    }})
+    return ans["plug"]["noul"] >= 0.6
 
 
 PLATFORMS = re.compile(r"\b(nebula|curiosity ?stream)\b", re.I)
@@ -1081,8 +1132,19 @@ def process(jev: Jev, vid: str, args) -> dict:
         probs = classify_lines(jev, lines, line_cats, ranges=ranges)
         # short categories false-positive on passing mentions ("tell me your thoughts",
         # "we did another video"), so they need one line Jev is sure about
-        segs = [s for s in find_runs(probs, line_cats, args.threshold)
-                if max(probs[i][s.cat] for i in range(s.first, s.last + 1)) >= PEAK.get(s.cat, 0.0)]
+        runs = find_runs(probs, line_cats, args.threshold)
+        peak = lambda s: max(probs[i][s.cat] for i in range(s.first, s.last + 1))  # noqa: E731
+        segs = [s for s in runs if peak(s) >= PEAK.get(s.cat, 0.0)]
+        # borderline selfpromo (peak 0.6-0.85: Patreon thanks, the creator's book, a friend's channel)
+        # used to be dropped with the passing mentions the 0.85 bar exists for; ask about those directly
+        borderline = [s for s in runs if s.cat == "selfpromo" and SELFPROMO_RECHECK <= peak(s) < PEAK["selfpromo"]]
+        if borderline:
+            ok = parallel(lambda s: is_self_plug(jev, lines, s, title), borderline)
+            for s, yes in zip(borderline, ok):
+                if yes:
+                    s.notes.append("borderline self-promo, confirmed by a second question")
+                    segs.append(s)
+            segs.sort(key=lambda s: s.first)
     channel = video_info(vid).get("channel") or ""
 
     def finish(s: Segment) -> None:  # each segment's follow-up questions are independent of the others
@@ -1156,11 +1218,14 @@ def process(jev: Jev, vid: str, args) -> dict:
         segs.append(o)
     if "intro" in args.categories and (i := detect_intro(words, music)):
         segs.append(i)
+    if "sponsor" in args.categories:
+        ads = [(s.start, s.end) for s in segs if s.cat == "sponsor"]
+        segs += [t for t in nebula_tags(words) if not any(a - 1 <= t.start and t.end <= b + 1 for a, b in ads)]
     if "poi_highlight" in args.categories and not any(e["category"] == "poi_highlight" for e in known) \
             and (hl := detect_highlight(jev, lines, title)):
         segs.append(hl)
     segs.sort(key=lambda s: s.start)
-    segs = [s for s in segs if s.end - s.start >= MIN_SECONDS[s.cat]]
+    segs = [s for s in segs if s.end - s.start >= MIN_SECONDS[s.cat] or "Nebula\" plug" in " ".join(s.notes)]
 
     if segs and not args.no_audio:
         print(f"    snapping {len(segs)} segment(s) to the audio", file=sys.stderr)
