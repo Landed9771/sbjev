@@ -22,15 +22,18 @@ OUT = Path(__file__).with_name("corpus.json")
 
 
 def main():
+    # optional: python eval/build_corpus.py @Channel1,@Channel2 [per_channel] [first_item]
+    channels = sys.argv[1].split(",") if len(sys.argv) > 1 else CHANNELS
+    per = int(sys.argv[2]) if len(sys.argv) > 2 else PER_CHANNEL
+    first = int(sys.argv[3]) if len(sys.argv) > 3 else 4
     corpus = json.loads(OUT.read_text()) if OUT.exists() else {}
-    for ch in CHANNELS:
-        r = subprocess.run(["yt-dlp", "--flat-playlist", "--print", "id", "--playlist-items", f"4:{3 + PER_CHANNEL}",
+    for ch in channels:
+        r = subprocess.run(["yt-dlp", "--flat-playlist", "--print", "id", "--playlist-items", f"{first}:{first - 1 + per}",
                             f"https://www.youtube.com/{ch}/videos"], capture_output=True, text=True)
         ids = r.stdout.split()
         kept = 0
         for vid in ids:
             if vid in corpus:
-                kept += 1
                 continue
             resp = requests.get("https://sponsor.ajay.app/api/skipSegments",
                                 params={"videoID": vid, "categories": json.dumps(CATS)}, timeout=20)

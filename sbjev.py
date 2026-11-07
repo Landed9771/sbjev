@@ -802,20 +802,41 @@ def sentence_edges(jev: Jev, words: list[Word], seg: Segment, title: str) -> Non
         "criteria": {sid(i): None for i in range(a, b)},
     }})
     end_i = int(ans["end"]["choice"][1:])
+    end_conf = ans["end"]["confidence"]
     if end_i < start_i:
         return  # inconsistent picks: keep the line-based edges
+
+    # the end pick often swallows the sign-off ("thanks so much for watching, see you in the next one")
+    # or a next-episode teaser ("Next time, or right now on Nebula, ..."); the crowd ends the ad before
+    # them (eval set C: ~13 of 30 late ends)
+    while end_i > start_i and end_i > named and SIGNOFF.search(sents[end_i].text):
+        end_i -= 1
+        if "sign-off left out of the ad" not in seg.notes:
+            seg.notes.append("sign-off left out of the ad")
+
+    # "We'll talk about that after the break." / "...right after a quick word from our sponsor": the
+    # crowd starts the segment on this cliffhanger, Jev counts it as content (eval set C: ~10 of 28 late
+    # starts). Same idea as include_return_line at the other end.
+    for _ in range(2):
+        if start_i > 0 and BREAK_TEASER.search(sents[start_i - 1].text) \
+                and sents[start_i].start - sents[start_i - 1].start < 12:
+            start_i -= 1
+            seg.notes.append("includes the 'after the break' line")
+        else:
+            break
     seg.start = sents[start_i].start
     nxt = sents[end_i + 1] if end_i + 1 < len(sents) else None
     seg.end = nxt.start if nxt else words[sents[end_i].last].t + 0.6
     if start_conf < 0.4:
         seg.notes.append("start uncertain")
-    if ans["end"]["confidence"] < 0.4:
+    if end_conf < 0.4:
         seg.notes.append("end uncertain")
 
 
-# experimental fixes, tested 2026-11-06 on Jev 1.14 (eval/e2e_eval.py): "own" (sponsor<->selfpromo
-# both ways) found 36/41 vs 34/41 on one held-out set and was neutral on a fresh one, so it's on by
-# default; "named", "end" and "walk" didn't hold up on fresh videos and stay off
+# experimental fixes, tested on Jev 1.14 (eval/e2e_eval.py): "own" (sponsor<->selfpromo both ways)
+# held up on fresh videos and is on by default; "named", "end" and "walk" didn't and stay off. Also
+# tried and dropped (no gain on a 97-video held-out set): a per-sentence yes/no "profile" for edges,
+# a wider trace-back window, close-call tie-breaks toward the earlier sentence, an opening-word prior.
 FIX = set(filter(None, os.environ.get("SBJEV_FIX", "own").split(",")))
 
 
@@ -866,6 +887,20 @@ def should_join(jev: Jev, lines: list[Line], a: Segment, b: Segment, channel: st
     if platform_plug(lines, pair):
         return True
     return a.cat == "selfpromo" and own_product(jev, lines, a, channel) < 0.6
+
+
+BREAK_TEASER = re.compile(
+    r"\b(after|before)\b[^.?!]{0,30}\b(the|this|a|our|today's|these)\s+(short\s+|quick\s+|brief\s+|little\s+)?"
+    r"(break|interval|intermission|sponsors?|ads?|word from|message from)\b(?![\w-]|\s+(of|on|in)\b)"
+    r"|\b(right after|after) (we|i) (thank|tell you about|hear from)\b"
+    r"|\bquick word from\b|\bword from (our|today's|this video's) sponsor\b", re.I)
+
+
+SIGNOFF = re.compile(
+    r"\bthanks?(\s+you)?(\s+(so|very)\s+much)?\s+(for|4)\s+watching\b"
+    r"|\bsee\s+(you|ya)(\s+(all|guys))?\s+(in|on)\s+(the|that|my)\s+next\b"
+    r"|\blet\s+me\s+know\s+what\s+you\s+think\b"
+    r"|^\W*(>>\s*)?(well,?\s+)?next\s+(time|week)\b", re.I)
 
 
 RETURN_PHRASE = re.compile(

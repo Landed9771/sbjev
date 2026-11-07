@@ -133,18 +133,26 @@ Jev answers are cached in `cache/`, so re-running a video is free.
 
 ## Accuracy
 
-Measured against locked or well-voted (3+) SponsorBlock segments from 14 large channels
-(`eval/`). Held-out videos were not used for tuning.
+Measured against locked or well-voted (3+) SponsorBlock segments: 212 videos from 28 channels
+(`eval/`). Held-out videos were not used for tuning; the largest test set is 97 videos from 14
+channels that nothing was tuned on.
 
-- **Finding segments:** 34–36 of 41 on one held-out set, 27 of 30 on a fresh one. Many "extra"
-  segments are real ones with few votes (end-of-video outros, "let me know in the comments").
+- **Finding segments:** 207 of 253 well-voted segments across the three held-out sets (82%;
+  79% on the 97-video set). About a third of "extra" segments are real ones with few votes
+  (end-of-video outros, "let me know in the comments"), another quarter are filed by the crowd
+  under a neighbouring category.
+- **Picking the right sentence (97-video set, before audio snapping):** 66% of starts and 62% of
+  ends within 1 s of the crowd, 73% / 75% within 3 s.
 - **Edges, when the right sentence is picked:** the audio step puts cuts a median **~0.1 s** from
   well-voted segments (0.13 s on starts, 0.11 s on ends, 170 crowd edges, held-out half). That is
   about as tight as the crowd agrees with itself: equally reasonable cut rules differ by 0.1–0.2 s.
-- **Picking the sentence** is the remaining weak spot. In about a third of segments Jev starts or
-  ends one sentence off, which means seconds, not fractions: long segues ("before we get to the
-  interview, I want to talk about how I research these videos...") or a passing mention of the
+- **What still goes wrong:** about a quarter of reads start or end a sentence or more off, which
+  means seconds, not fractions. Mostly long themed segues, where the video's topic slides into
+  the sponsor's ("...protesters needed VPNs..." before a VPN ad), and passing mentions of the
   sponsor before the actual read. Check those in SponsorBlock's preview before submitting.
+  Handled by fixed rules: "after the break" cliffhangers count as the start; "and now back to
+  the video" counts as the end; "thanks for watching" sign-offs and "next time on..." teasers
+  are left out of the ad.
 - **Highlight** is conservative: it only answers when clearly sure. That was 2 of 8 MrBeast
   videos, both within 5 s, and no wrong answers.
 - **Filler** doesn't work well from transcripts; the crowd's filler is mostly visual.

@@ -2740,5 +2740,2405 @@
     "locked": 0
    }
   ]
+ },
+ "8zDVBMIj2dY": {
+  "channel": "@JayzTwoCents",
+  "duration": 1858.381,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     478.159,
+     526.059
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "lP7GbnUoVbA": {
+  "channel": "@JayzTwoCents",
+  "duration": 1502.6678,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     446.449,
+     513.136
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "s8qkejdyffk": {
+  "channel": "@JayzTwoCents",
+  "duration": 1661.581,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     380.115,
+     428.417
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "z-26n8rNpWU": {
+  "channel": "@HardwareCanucks",
+  "duration": 961.021,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     208.378,
+     243.479
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "BxXfeotgVVA": {
+  "channel": "@TomScottGo",
+  "duration": 1264.6262,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     1226.661,
+     1264.626
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1249.377,
+     1251.044
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "TumxO2glmPQ": {
+  "channel": "@TomScottGo",
+  "duration": 1869.721,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     88.168,
+     96.882
+    ],
+    "votes": 9,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     858.905,
+     925.346
+    ],
+    "votes": 13,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1833.367,
+     1835.005
+    ],
+    "votes": 7,
+    "locked": 1
+   }
+  ]
+ },
+ "drrUvxtT6lU": {
+  "channel": "@TomScottGo",
+  "duration": 660.85016,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     580.742,
+     641.691
+    ],
+    "votes": 10,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     643.386,
+     644.866
+    ],
+    "votes": 8,
+    "locked": 1
+   }
+  ]
+ },
+ "pZtU48TjxXg": {
+  "channel": "@TomScottGo",
+  "duration": 1566.6635,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     973.528,
+     1062.016
+    ],
+    "votes": 13,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1547.69,
+     1549.48
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "AQqVcdTH5bQ": {
+  "channel": "@TomScottGo",
+  "duration": 1557.8102,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1452.658,
+     1537.824
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1538.894,
+     1540.538
+    ],
+    "votes": 4,
+    "locked": 1
+   }
+  ]
+ },
+ "Dr4lseoF82c": {
+  "channel": "@TomScottGo",
+  "duration": 1079.2609,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     20.081,
+     27.165
+    ],
+    "votes": 9,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     501.087,
+     601.486
+    ],
+    "votes": 13,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1059.545,
+     1079.2609
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1063.607,
+     1065.382
+    ],
+    "votes": 5,
+    "locked": 1
+   }
+  ]
+ },
+ "YwxiF2Gqtww": {
+  "channel": "@TomScottGo",
+  "duration": 1059.341,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     534.7,
+     611.78
+    ],
+    "votes": 16,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1039.29,
+     1040.94
+    ],
+    "votes": 9,
+    "locked": 1
+   }
+  ]
+ },
+ "IJSO-BL3pEU": {
+  "channel": "@TomScottGo",
+  "duration": 1359.4102,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1268.765,
+     1341.067
+    ],
+    "votes": 8,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1341.764,
+     1343.25
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1350.51,
+     1359.421
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "tDLbO9KeddY": {
+  "channel": "@TomScottGo",
+  "duration": 1584.141,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     820.082,
+     893.159
+    ],
+    "votes": 16,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1564.95,
+     1566.65
+    ],
+    "votes": 6,
+    "locked": 1
+   }
+  ]
+ },
+ "EU-rZuJxdbw": {
+  "channel": "@TomScottGo",
+  "duration": 996.06085,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     467.289,
+     530.842
+    ],
+    "votes": 12,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     977.345,
+     979.098
+    ],
+    "votes": 8,
+    "locked": 1
+   }
+  ]
+ },
+ "5_B1Mq02wcI": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 993.501,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     50.13,
+     59.247
+    ],
+    "votes": 3,
+    "locked": 0
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     293.572,
+     298.287
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     880.192,
+     970.82
+    ],
+    "votes": 5,
+    "locked": 0
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     970.584,
+     993.50085
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "n_1wzYQwnts": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1292.941,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     78.678,
+     86.623
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     136.831,
+     146.031
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1126.427,
+     1270.25
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1270.164,
+     1292.941
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "-17mPnFxi30": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 945.041,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     147.995,
+     158.008
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     266.487,
+     311.292
+    ],
+    "votes": 19,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     921.386,
+     945.041
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "r1wwtGgnzg4": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1154.521,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     102.539,
+     113.028
+    ],
+    "votes": 4,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     549.376,
+     560.462
+    ],
+    "votes": 4,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1009.293,
+     1131.861
+    ],
+    "votes": 6,
+    "locked": 0
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1131.541,
+     1154.5037
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "stQfGfUSLQg": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1107.5275,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     128.93,
+     138.956
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1005.824,
+     1082.012
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1081.489,
+     1107.5275
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "Iclf_JnPkKw": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1351.141,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     38.67,
+     43.592
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     239.04,
+     243.441
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     659.788,
+     663.4
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1247.37,
+     1328.429
+    ],
+    "votes": 7,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1328.396,
+     1351.141
+    ],
+    "votes": 3,
+    "locked": 1
+   }
+  ]
+ },
+ "Ku_ockR2t44": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1473.4795,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     121.778,
+     141.65
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "intro",
+    "segment": [
+     144.378,
+     154.704
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1168.144,
+     1184.385
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1275.575,
+     1295.918
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1378.755,
+     1473.139
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "7oi4yMr8Rjk": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1075.801,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     87.139,
+     94.703
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     927.257,
+     1050.143
+    ],
+    "votes": 4,
+    "locked": 0
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1052.763,
+     1075.788
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "3YvwqMDDb3k": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1073.641,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     128.269,
+     137.962
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     342.719,
+     390.439
+    ],
+    "votes": 10,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     984.656,
+     993.251
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1049.164,
+     1073.6285
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "DWLcmq_DiaA": {
+  "channel": "@PracticalEngineeringChannel",
+  "duration": 1342.761,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     106.634,
+     115.448
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     145.617,
+     152.227
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     271.33,
+     276.676
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1194.234,
+     1320.053
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1320.055,
+     1342.761
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "9xwU-ochogk": {
+  "channel": "@standupmaths",
+  "duration": 1109.641,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     361.202,
+     435.63
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "c79PsbkHw4A": {
+  "channel": "@standupmaths",
+  "duration": 1408.541,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     27.806,
+     35.424
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     1361.63,
+     1365.725
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "k3sIHbj-TUI": {
+  "channel": "@standupmaths",
+  "duration": 970.141,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     12.483,
+     39.558
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "intro",
+    "segment": [
+     54.219,
+     61.721
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     307.428,
+     346.748
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     935.021,
+     948.218
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "ixXOUeBOPJw": {
+  "channel": "@standupmaths",
+  "duration": 1189.861,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     241.855,
+     349.492
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1133.48,
+     1154.968
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "RAexoVJOqDQ": {
+  "channel": "@standupmaths",
+  "duration": 1387.321,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     37.869,
+     44.003
+    ],
+    "votes": 6,
+    "locked": 0
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     465.267,
+     574.311
+    ],
+    "votes": 6,
+    "locked": 0
+   }
+  ]
+ },
+ "XllQPr8FtPE": {
+  "channel": "@standupmaths",
+  "duration": 1652.0608,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     99.305,
+     108.785
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     108.636,
+     123.068
+    ],
+    "votes": 9,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     385.697,
+     392.081
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     460.843,
+     473.973
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1478.313,
+     1563.83
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1622.668,
+     1635.529
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "kH_bSvf7EVA": {
+  "channel": "@standupmaths",
+  "duration": 1234.5776,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     202.343,
+     206.812
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     206.063,
+     224.564
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1134.231,
+     1168.314
+    ],
+    "votes": 5,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     1168.013,
+     1175.213
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     1198.42,
+     1205.614
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1205.313,
+     1213.377
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "x3dE-NJ1UDQ": {
+  "channel": "@standupmaths",
+  "duration": 977.621,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     53.287,
+     60.582
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     60.508,
+     68.201
+    ],
+    "votes": 8,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     818.315,
+     923.247
+    ],
+    "votes": 7,
+    "locked": 0
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     930.06,
+     938.182
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "P8CVqDKeOKk": {
+  "channel": "@ColdFusion",
+  "duration": 1067.621,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     1044.4,
+     1053.7
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "e2zjpCqTmyo": {
+  "channel": "@ColdFusion",
+  "duration": 1283.981,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     485.505,
+     585.598
+    ],
+    "votes": 4,
+    "locked": 0
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     1260,
+     1266.1
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "7K_sA6o1dOE": {
+  "channel": "@ColdFusion",
+  "duration": 1341.661,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     571.036,
+     679.463
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     1309.002,
+     1322.203
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "0Hvt-xhS65k": {
+  "channel": "@ColdFusion",
+  "duration": 1068.201,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     965.44,
+     1061.333
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "IBZ7TqauY_4": {
+  "channel": "@ColdFusion",
+  "duration": 1083.181,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     1038.384,
+     1046.878
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "tj7ckn8WhEM": {
+  "channel": "@ColdFusion",
+  "duration": 1369.9489,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     1213.743,
+     1225.197
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1225.164,
+     1325.456
+    ],
+    "votes": 6,
+    "locked": 1
+   }
+  ]
+ },
+ "a-uqfwq9Ibo": {
+  "channel": "@ColdFusion",
+  "duration": 764.101,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     277.313,
+     383.272
+    ],
+    "votes": 3,
+    "locked": 1
+   }
+  ]
+ },
+ "wgyGVMN8Hxw": {
+  "channel": "@ColdFusion",
+  "duration": 1049.061,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     296.552,
+     385.517
+    ],
+    "votes": 4,
+    "locked": 1
+   }
+  ]
+ },
+ "nZmoq_XJW6Y": {
+  "channel": "@ColdFusion",
+  "duration": 1040.821,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     893.566,
+     991.061
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "interaction",
+    "segment": [
+     989.22,
+     1005.55
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "j2QEieIiiXg": {
+  "channel": "@PolyMatter",
+  "duration": 1179.48,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     147.437,
+     160.9
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     1045.417,
+     1179.349
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "Y2v6rAK6pZs": {
+  "channel": "@PolyMatter",
+  "duration": 1049.4102,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     905.21,
+     1049.41
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "t9PF8V132Y4": {
+  "channel": "@PolyMatter",
+  "duration": 1188.4512,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1069.148,
+     1188.451
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "uQTosk4xLT8": {
+  "channel": "@PolyMatter",
+  "duration": 1011.481,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     216.732,
+     226.744
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     794.592,
+     1011.4667
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "tFjvMTtbGHw": {
+  "channel": "@PolyMatter",
+  "duration": 1013.601,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     54.036,
+     64.917
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "vEH4yo7PqzM": {
+  "channel": "@PolyMatter",
+  "duration": 1105.181,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     986.785,
+     1105.181
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "EZTWK5fjHnk": {
+  "channel": "@PolyMatter",
+  "duration": 1284.061,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1106.6,
+     1284.061
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "GpflQtqkQZ0": {
+  "channel": "@PolyMatter",
+  "duration": 765,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     123.853,
+     134.755
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     641.238,
+     765
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "HznjX-i3sqQ": {
+  "channel": "@PolyMatter",
+  "duration": 943.701,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     132.599,
+     141.961
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     858.47,
+     943.701
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "E8e2sKgMbJA": {
+  "channel": "@PolyMatter",
+  "duration": 900.321,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     188.832,
+     198.321
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     801.225,
+     900.321
+    ],
+    "votes": 3,
+    "locked": 1
+   }
+  ]
+ },
+ "U_UoAZrOTNU": {
+  "channel": "@RealLifeLore",
+  "duration": 1520.401,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1393.2,
+     1520.401
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "WiRLNEl-4bk": {
+  "channel": "@RealLifeLore",
+  "duration": 1810.321,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1655.707,
+     1810.321
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "YSBh_TPIwHY": {
+  "channel": "@RealLifeLore",
+  "duration": 1900.3595,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1781.608,
+     1900.3595
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "JjhyYOKmFGM": {
+  "channel": "@RealLifeLore",
+  "duration": 1752.181,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1519.395,
+     1752.181
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "zkbgLhBmzGo": {
+  "channel": "@RealLifeLore",
+  "duration": 2887.6448,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     2787.057,
+     2887.6448
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "ZPu3kezlC08": {
+  "channel": "@RealLifeLore",
+  "duration": 1842.121,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     1746.983,
+     1842.121
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "72pyU1ZRun0": {
+  "channel": "@Techquickie",
+  "duration": 438.221,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     216.638,
+     259.41
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "uMhdcq2rqUU": {
+  "channel": "@Techquickie",
+  "duration": 557.121,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     41.816,
+     44.537
+    ],
+    "votes": 6,
+    "locked": 0
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     532.748,
+     538.634
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "E5p4TgCNd1I": {
+  "channel": "@Techquickie",
+  "duration": 547.521,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     243.871,
+     277.985
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "Nx6ThYgEtg8": {
+  "channel": "@Techquickie",
+  "duration": 492.801,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     127.671,
+     174.303
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     475.783,
+     483.142
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "AR-F8Ttpld8": {
+  "channel": "@Techquickie",
+  "duration": 487.241,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     238.946,
+     282.882
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "XQNhCU17ipM": {
+  "channel": "@Techquickie",
+  "duration": 571.421,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     314.273,
+     353.337
+    ],
+    "votes": 5,
+    "locked": 0
+   }
+  ]
+ },
+ "Hj_yRDR9EzE": {
+  "channel": "@Techquickie",
+  "duration": 406.201,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     132.808,
+     167.034
+    ],
+    "votes": 3,
+    "locked": 1
+   }
+  ]
+ },
+ "i7esSCr2UJk": {
+  "channel": "@scishow",
+  "duration": 910.221,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     441.711,
+     524.288
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "G25Vd8hpLJI": {
+  "channel": "@scishow",
+  "duration": 656.30615,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     35.76,
+     39.142
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     612.962,
+     644.601
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     645.577,
+     656.30615
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "dfA_VA20A2Y": {
+  "channel": "@scishow",
+  "duration": 901.521,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     39.317,
+     43.05
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     443.798,
+     494.4
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "ua29hkUXwg4": {
+  "channel": "@scishow",
+  "duration": 520.44794,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     146.145,
+     200.835
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     509.831,
+     520.44794
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "j6ttTK8x8ZA": {
+  "channel": "@MustardChannel",
+  "duration": 838.4075,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     826.8,
+     838.4075
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "kG8zlZNnZlE": {
+  "channel": "@MustardChannel",
+  "duration": 1064.941,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     190.534,
+     194.991
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     873.121,
+     1064.941
+    ],
+    "votes": 4,
+    "locked": 1
+   }
+  ]
+ },
+ "FXTR-QNGUt0": {
+  "channel": "@MustardChannel",
+  "duration": 861.0034,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     698.003,
+     851.623
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "8AbtCE-sePc": {
+  "channel": "@MustardChannel",
+  "duration": 1016.041,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     42.744,
+     46.678
+    ],
+    "votes": 2,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     852.873,
+     1006.671
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1005.538,
+     1016.041
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "C_dNt4UEVZQ": {
+  "channel": "@MustardChannel",
+  "duration": 847.85815,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     710.722,
+     839.634
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     838.415,
+     847.858
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "IjCylxs8hZU": {
+  "channel": "@MustardChannel",
+  "duration": 806.081,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     36.699,
+     42.671
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     631.477,
+     806.081
+    ],
+    "votes": 3,
+    "locked": 1
+   }
+  ]
+ },
+ "bEgAgJc8Heg": {
+  "channel": "@MustardChannel",
+  "duration": 956.981,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     844.166,
+     947.892
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "RmlWmDokzGg": {
+  "channel": "@MustardChannel",
+  "duration": 860.881,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     734.884,
+     860.881
+    ],
+    "votes": 13,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     851.624,
+     860.881
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "vjqt8T3tJIE": {
+  "channel": "@Vsauce",
+  "duration": 1374.041,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     594.157,
+     688.284
+    ],
+    "votes": 46,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1353.525,
+     1374.041
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "fXW-QjBsruE": {
+  "channel": "@Vsauce",
+  "duration": 2273.421,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     847.706,
+     898.167
+    ],
+    "votes": 18,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     899.9134,
+     902.2041
+    ],
+    "votes": 8,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     915.4734,
+     916.89764
+    ],
+    "votes": 6,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     2225.483,
+     2236.831
+    ],
+    "votes": 3,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     2236.8,
+     2273.421
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "_ArVh3Cj9rw": {
+  "channel": "@Vsauce",
+  "duration": 1802,
+  "segments": [
+   {
+    "category": "outro",
+    "segment": [
+     1785.702,
+     1802.001
+    ],
+    "votes": 6,
+    "locked": 0
+   }
+  ]
+ },
+ "zHL9GP_B30E": {
+  "channel": "@Vsauce",
+  "duration": 0,
+  "segments": [
+   {
+    "category": "outro",
+    "segment": [
+     1807.75,
+     1818.8
+    ],
+    "votes": 13,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     1818.8,
+     1867.521
+    ],
+    "votes": 14,
+    "locked": 1
+   }
+  ]
+ },
+ "U6VBV4QUMu0": {
+  "channel": "@Vsauce",
+  "duration": 0,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     1085.345,
+     1175.612
+    ],
+    "votes": 14,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1320.8923,
+     1326.9508
+    ],
+    "votes": 6,
+    "locked": 0
+   }
+  ]
+ },
+ "egEraZP9yXQ": {
+  "channel": "@Vsauce",
+  "duration": 1286.5903,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     1268.392,
+     1286.59
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "9Vmwsg8Eabo": {
+  "channel": "@Vsauce",
+  "duration": 2441,
+  "segments": [
+   {
+    "category": "intro",
+    "segment": [
+     0,
+     3.063688
+    ],
+    "votes": 7,
+    "locked": 1
+   },
+   {
+    "category": "intro",
+    "segment": [
+     24.673,
+     39.554
+    ],
+    "votes": 5,
+    "locked": 0
+   }
+  ]
+ },
+ "_WHRWLnVm_M": {
+  "channel": "@Vsauce",
+  "duration": 1340.661,
+  "segments": [
+   {
+    "category": "selfpromo",
+    "segment": [
+     332.102,
+     351.211
+    ],
+    "votes": 5,
+    "locked": 0
+   },
+   {
+    "category": "outro",
+    "segment": [
+     1294.756,
+     1340.661
+    ],
+    "votes": 95,
+    "locked": 0
+   }
+  ]
+ },
+ "nACJOKV_YYA": {
+  "channel": "@BobbyBroccoli",
+  "duration": 5606.861,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     0,
+     3.016
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     5521.135,
+     5606.861
+    ],
+    "votes": 2,
+    "locked": 1
+   }
+  ]
+ },
+ "KWlBZT7L1qM": {
+  "channel": "@BobbyBroccoli",
+  "duration": 3896.621,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     3805.019,
+     3876.56
+    ],
+    "votes": 5,
+    "locked": 0
+   },
+   {
+    "category": "outro",
+    "segment": [
+     3876.525,
+     3896.621
+    ],
+    "votes": 3,
+    "locked": 0
+   }
+  ]
+ },
+ "EbfJFPVApu8": {
+  "channel": "@BobbyBroccoli",
+  "duration": 4217.321,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     0,
+     3.128
+    ],
+    "votes": 5,
+    "locked": 0
+   },
+   {
+    "category": "sponsor",
+    "segment": [
+     4125.165,
+     4197.234
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "jn92eWhGG14": {
+  "channel": "@BobbyBroccoli",
+  "duration": 3892.1248,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     0,
+     3.184
+    ],
+    "votes": 4,
+    "locked": 0
+   }
+  ]
+ },
+ "4vKsjMC1tP8": {
+  "channel": "@BobbyBroccoli",
+  "duration": 169.661,
+  "segments": [
+   {
+    "category": "sponsor",
+    "segment": [
+     47.594,
+     47.78
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "Qal0Lzd3kDA": {
+  "channel": "@ThioJoe",
+  "duration": 724.981,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     700.967,
+     704.44
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     704.371,
+     714.45
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "1wxX1Vo30h4": {
+  "channel": "@ThioJoe",
+  "duration": 751.801,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     720.703,
+     731.267
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     731.18,
+     739.042
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "P0JoQ2V8Cx8": {
+  "channel": "@ThioJoe",
+  "duration": 504.901,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     480.613,
+     484.654
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     484.017,
+     493.529
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "JTzhuGvvc-c": {
+  "channel": "@ThioJoe",
+  "duration": 602.6955,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     567.7,
+     582.1
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     582.081,
+     591.627
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "outro",
+    "segment": [
+     594.3,
+     602.6955
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "GNZUoJn1z90": {
+  "channel": "@ThioJoe",
+  "duration": 534.701,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     506.222,
+     514.151
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     514.08,
+     524.26
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "63Pf51WuUbo": {
+  "channel": "@ThioJoe",
+  "duration": 657.661,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     633.95,
+     637.106
+    ],
+    "votes": 1,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     637.036,
+     646.516
+    ],
+    "votes": 1,
+    "locked": 1
+   }
+  ]
+ },
+ "JTkPOmRE3A8": {
+  "channel": "@ThioJoe",
+  "duration": 460.561,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     435.519,
+     440.243
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     439.956,
+     448.351
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
+ },
+ "wieyvu41Z0A": {
+  "channel": "@ThioJoe",
+  "duration": 483.081,
+  "segments": [
+   {
+    "category": "interaction",
+    "segment": [
+     458.892,
+     462.765
+    ],
+    "votes": 0,
+    "locked": 1
+   },
+   {
+    "category": "selfpromo",
+    "segment": [
+     462.478,
+     470.34
+    ],
+    "votes": 0,
+    "locked": 1
+   }
+  ]
  }
 }
